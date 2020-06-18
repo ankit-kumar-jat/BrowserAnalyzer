@@ -1,0 +1,111 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Pangolin',sans-serif;
+    font-weight: normal;
+    font-size: 75px;
+    color: black;
+}
+
+#header-nav {
+    border-radius: 0;
+    border: 0;
+}
+
+
+.navbar-default .navbar-nav>.active>a{
+    background-color: transparent;
+}
+
+p{
+    font-size: .25em;
+}
+
+.container-fluid > h2{
+    margin-bottom: 30px;
+    color: #337ab7;
+}
+
+.navbar-brand{
+    font-family: 'Pangolin',sans-serif;
+    margin-top: 0;
+    padding-top: 0;
+    height: auto;
+}
+
+.navbar-brand a{
+    color: black;
+}
+
+.navbar-brand a:hover, a:focus{
+    text-decoration: none;
+    color: blue;
+}
+
+.navbar-toggle{
+    margin-top: 20px;
+}
+
+h2{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+
+.active a{
+    font-size: .3em;
+}
+
+#nav-list .active a:hover{
+    color: blue;
+    background-color: transparent;
+}
+
+.panel{
+    border-radius: 0;
+    background-color: blue;
+    border: 2px solid black;
+}
+
+.button{
+    border: none;
+    padding: 10px 25px;
+    text-align: center;
+    display: inline-block;
+    font-size: .3em;
+    cursor: pointer;
+    margin: none;
+}
+
+.button1{
+    background-color: blue;
+}
+
+.button1 a{
+    text-decoration: none;
+    color: white;
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+    #nav-list{
+        float : right;
+        margin-top: 20px;
+    }
+}
+
+#nav-list{
+    float: center;
+}
+
+.welcome-note > h2{
+    margin-top: 10%;
+}
+
+.welcome-note > h3{
+    margin-top: 3%;
+    margin-bottom: none;
+}
+
+
+
