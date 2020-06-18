@@ -3,8 +3,20 @@ body{
     padding: 0;
     font-family: 'Pangolin',sans-serif;
     font-weight: normal;
-    font-size: 75px;
+    font-size: 100%;
     color: black;
+}
+
+.logo{
+    width: 50px;
+    height: 33px;
+    margin-bottom: 15px;
+}
+
+p{
+    color: #555;
+    word-spacing: 4px;
+    font-size: 2em;
 }
 
 #header-nav {
@@ -17,11 +29,8 @@ body{
     background-color: transparent;
 }
 
-p{
-    font-size: .25em;
-}
 
-.container-fluid > h2{
+.container> h2{
     margin-bottom: 30px;
     color: #337ab7;
 }
@@ -31,10 +40,11 @@ p{
     margin-top: 0;
     padding-top: 0;
     height: auto;
+    color: #555;
 }
 
-.navbar-brand a{
-    color: black;
+h1{
+    color: #555;
 }
 
 .navbar-brand a:hover, a:focus{
@@ -47,13 +57,15 @@ p{
 }
 
 h2{
+    color: darkgray;
+    font-size: 3em;
     margin-top: 0;
     margin-bottom: 0;
 }
 
 
 .active a{
-    font-size: .3em;
+    font-size: 2em;
 }
 
 #nav-list .active a:hover{
@@ -61,24 +73,21 @@ h2{
     background-color: transparent;
 }
 
-.panel{
-    border-radius: 0;
-    background-color: blue;
-    border: 2px solid black;
-}
 
 .button{
     border: none;
     padding: 10px 25px;
     text-align: center;
     display: inline-block;
-    font-size: .3em;
+    font-size: 2em;
     cursor: pointer;
     margin: none;
 }
 
 .button1{
     background-color: blue;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 .button1 a{
@@ -91,6 +100,9 @@ h2{
     #nav-list{
         float : right;
         margin-top: 20px;
+    }
+    .active a{
+        margin-top: .3em;
     }
 }
 
