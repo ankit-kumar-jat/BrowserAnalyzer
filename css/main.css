@@ -40,16 +40,19 @@ p{
     margin-top: 0;
     padding-top: 0;
     height: auto;
-    color: #555;
 }
 
-h1{
-    color: #555;
-}
 
 .navbar-brand a:hover, a:focus{
     text-decoration: none;
-    color: blue;
+}
+
+.navbar-brand a h1:hover, a h1:focus{
+    color: #3fd6fb;
+}
+
+.navbar-brand a h1{
+    color: #555;
 }
 
 .navbar-toggle{
@@ -69,7 +72,7 @@ h2{
 }
 
 #nav-list .active a:hover{
-    color: blue;
+    color: #3fd6fb;
     background-color: transparent;
 }
 
@@ -77,6 +80,7 @@ h2{
 .button{
     border: none;
     padding: 10px 25px;
+    text-transform: uppercase;
     text-align: center;
     display: inline-block;
     font-size: 2em;
@@ -85,7 +89,7 @@ h2{
 }
 
 .button1{
-    background-color: blue;
+    background-color: #009dfb;
     margin-bottom: 5%;
     margin-top: 5%;
 }

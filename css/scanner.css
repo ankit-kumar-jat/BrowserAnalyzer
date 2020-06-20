@@ -1,12 +1,61 @@
 #nav-list .scanner a{
-    color: blue;
+    color: #3fd6fb;
 }
 
 .para-space{
     margin-bottom: 30px;
 }
 
-span{
+strong{
     color: red;
 }
+
+h1{
+    color: #555;
+}
+
+.basic-scan{
+    display: none;
+}
+
+.scan-manu{
+    display: none;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+li #scan-item:hover a:focus{
+    background-color: #009dfb;
+}
+
+
+.scan-items{
+    float: left;
+}
+
+.scan-items ul{
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    border-radius: 3px; 
+    background-color: #ecf9fc;
+}
+
+.scan-items ul li{
+    font-size: 2em;
+    font-weight: 300;
+    list-style: none;
+    padding: .7em 1.5em .7em 1.5em;
+}
+
+.scan-items ul li a{
+    text-decoration: none;
+    color: #555;
+}
+
+ .scanning{
+    display: none;
+    margin-top: 20em;
+    margin-bottom: 12em;
+ }
 

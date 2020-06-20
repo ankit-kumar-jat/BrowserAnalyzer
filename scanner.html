@@ -9,8 +9,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/scanner.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="js/jquery.js" defer=""></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer=""></script>
+        <script src="js/scanner.js" defer=""></script>
     </head>
     <body>
         <header>
@@ -42,10 +43,28 @@
             <p class="para-space">What information can a website find out about you when you visit it? A lot more than you probably realize. This tool lists information that any website, advertisement, and widget can collect from your web browser. Such information could be used to identify you and/or track your behavior using tactics like IP lookups and browser fingerprinting. While none of this may be considered personally identifiable information (PII), the profile drawn from all these pieces of information can be so distinct that it can only plausibly match a single person.</p>
             <h2>Tests</h2>
             <p class="para-space">This page includes several tests that you can scroll through and perform one at a time to evaluate your browser privacy.</p>
-            <p><span>PLEASE PAY ATTENTION :</span>In order to demonstrate that a malicious site can easily detect logged in accounts without asking your permission, this tool will contact many popular websites where you may be logged in. However we don’t access these sites but simply present them as potential risks to your privacy.</p>
+            <p><strong>PLEASE PAY ATTENTION : </strong>In order to demonstrate that a malicious site can easily detect logged in accounts without asking your permission, this tool will contact many popular websites where you may be logged in. However we don’t access these sites but simply present them as potential risks to your privacy.</p>
         </div>
         <div class="container text-center">
-            <button class="button button1"><a href="#scan">Start scan</a></button>
+            <button class="button button1" onclick="startScanning()" id="button_1"><a>Start scan</a></button>
+        </div>
+        <div class="container text-center scan-manu">
+            <div class="scan-items text-left">
+                <ul>
+                    <li id="scan-item"><a href=#basic-scan>1. Basic scan</a></li>
+                    <li id="scan-item"><a href=#autofill>2. Autofill Test</a></li>
+                    <li id="scan-item"><a href=#user-account>3. User Account Test</a></li>
+                    <li id="scan-item"><a href=#system>4. Browser &amp; System Info</a></li>
+                    <li id="scan-item"><a href=#fingerprint>5. Fingerprint Analysis</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="container text-center scanning" id="scanning">
+            <img src="assets/gif/scanning.gif" alt="scanning...">
+            <p>Scanning your browser please wait ...</p>
+        </div>
+        <div class="container text-left basic-scan" id="basic-scan">
+            <h3 id="ip"></h3>
         </div>
     </body>
 </html>
