@@ -14,19 +14,13 @@ h1{
     color: #555;
 }
 
-.basic-scan{
-    display: none;
-}
 
 .scan-manu{
     display: none;
     margin-top: 3em;
-    margin-bottom: 3em;
+    cursor: pointer;
 }
 
-li #scan-item:hover a:focus{
-    background-color: #009dfb;
-}
 
 
 .scan-items{
@@ -59,3 +53,55 @@ li #scan-item:hover a:focus{
     margin-bottom: 12em;
  }
 
+
+//basicScan
+
+
+
+
+.your-ip-here{
+    color: #555;
+}
+
+.your-ip-here .border{
+    border: 1px solid #017bff;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 11px 50px;
+    position: relative;
+    left: 10px;
+}
+
+.bold{
+    font-size: 2.5em;
+    font-weight: bold;
+}
+
+.normal{
+    font-weight: normal;
+    font-size: 2em;
+}
+
+.basic-scan{
+    display: none;
+}
+
+//autofill
+
+.autofill-scan{
+}
+
+//user-accounts
+
+.user-accounts-scan{
+}
+
+//system
+
+.system-scan{
+}
+
+//fingerprinting
+
+.fingerprinting-scan{
+}

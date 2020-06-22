@@ -10,13 +10,18 @@ body{
 .logo{
     width: 50px;
     height: 33px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 p{
     color: #555;
     word-spacing: 4px;
     font-size: 2em;
+}
+
+span{
+    color: #555;
+    word-spacing: 4px;
 }
 
 #header-nav {
@@ -60,7 +65,6 @@ p{
 }
 
 h2{
-    color: darkgray;
     font-size: 3em;
     margin-top: 0;
     margin-bottom: 0;
