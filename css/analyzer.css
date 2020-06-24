@@ -1,0 +1,32 @@
+body{
+    padding-bottom: 20%;
+}
+h1{
+    margin-top: 4%;
+}
+p{
+    font-size: 115%;
+    word-spacing: .15em;
+}
+h2{
+    color: #009dfb;
+}
+#scanning{
+    display: none;
+    padding-top: 13%;
+}
+.your-ip-here {
+    font-size: 120%;
+    word-spacing: .15em;
+}
+#basic-scan{
+    display: none;
+}
+#myTab{
+    display: none;
+}
+@media (max-width: 575.98px) {
+    .ip{
+        font-size: 80%;
+    }
+}

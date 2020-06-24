@@ -58,11 +58,11 @@
         <div class="container text-center scan-manu " id="scan-manu">
             <div class="scan-items text-left" id="scan-items">
                 <ul>
-                    <li id="scan-item btn1"><a>1. Basic scan</a></li>
-                    <li id="scan-item btn2"><a>2. Autofill Test</a></li>
-                    <li id="scan-item btn3"><a>3. User Account Test</a></li>
-                    <li id="scan-item btn4"><a>4. Browser &amp; System Info</a></li>
-                    <li id="scan-item btn5"><a>5. Fingerprint Analysis</a></li>
+                    <li class="scan-item" id="btn1"><a>1. Basic scan</a></li>
+                    <li class="scan-item" id="btn2"><a>2. Autofill Test</a></li>
+                    <li class="scan-item" id="btn3"><a>3. User Account Test</a></li>
+                    <li class="scan-item" id="btn4"><a>4. Browser &amp; System Info</a></li>
+                    <li class="scan-item" id="btn5"><a>5. Fingerprint Analysis</a></li>
                 </ul>
             </div>
         </div>
@@ -79,6 +79,20 @@
         </div>
         <div class="container text-left autofill-scan" id="autofill-scan">
             <h2>Autofill Info</h2>
+            <div>
+                <h3>Please Select Your State/Region from Dropdown Below:</h3> 
+                <input required="" id="state" name="state" type="text" class="btn btn-default" placeholder="Select Your State/Province" autocomplete="region">
+                <br> 
+                <input id="city" name="city" type="text" placeholder="" autocomplete="locality">
+                <br> 
+                <input id="email" name="email" type="email" value="" autocomplete="email"> 
+                <input id="street" name="street" type="text" autocomplete="street-address"> 
+                <input id="postal" name="postal" type="text" autocomplete="postal-code"> 
+                <input id="phone" name="phone" type="text" autocomplete="tel">
+
+                <p>Websites can use autofill to trick you into giving up information. By simply selecting your region or state from the dropdown menu, the website can take advantage of your browser’s autofill capabilities to gather far more personal data. Don’t worry; none of your data will leave or be collected from your device in this demonstration.</p>
+            </div>
+
         </div>
         <div class="container text-left user-accounts-scan" id="user-accounts-scan">
             <h2>User Accounts Info</h2>

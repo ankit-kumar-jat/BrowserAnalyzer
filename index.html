@@ -1,45 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
-        <title>Browser Analyzer</title>
+        <!-- Required meta tags -->
         <meta charset="utf-8">
-        <link rel="shortcut icon" href="assets/logo/logo.svg" type="image/x-icon">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href='https://fonts.googleapis.com/css?family=Pangolin' rel='stylesheet'>
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+        <!-- My css -->
         <link rel="stylesheet" href="css/main.css">
-        <script src="js/jquery.js" defer=""></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" defer=""></script>
-        <script src="js/index.js" defer=""></script>
+        <link rel="stylesheet" href="css/index.css">
+        <title>Browser Analyzer</title>
+        <script>
+            var ipv4api = "https://api.ipify.org?format=json"
+            var ipv6api = "https://api6.ipify.org?format=json"
+            var iplocationapi = "http://ip-api.com/json/"
+        </script>
+        <link rel="shortcut icon" href="assets/brand/logo.svg" type="image/x-icon">
+        <link href='https://fonts.googleapis.com/css?family=Pangolin' rel='stylesheet'>
     </head>
     <body>
         <header>
-            <nav id="header-nav" class="navbar navbar-default">
-                <div class="container">
-                    <div class="navbar-header">
-                        <div class="navbar-brand">
-                            <a href="index.html"><h1><img class="logo" src="assets/logo/logo.svg" alt="logo"> Browser Analyzer</h1></a>
-                        </div>
-                        <button type="button" class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                        </button>
-                    </div>
-                    <div class="collapse navbar-collapse" id="myNavbar">
-                        <ul class="nav navbar-nav text-center" id="nav-list">
-                            <li class="active"><a href="scanner.html">Scanner</a></li>
-                            <li class="active"><a href="#AboutUs">About Us</a></li>
-                            <li class="active"><a href="#ContectUs">Contect Us</a></li>
-                        </ul>
-                    </div>
+        <nav class="navbar navbar-light navbar-expand-sm" style="background-color: #e3f2fd;"> 
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                <img src="assets/brand/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
+                Browser Analyzer
+                </a>
+                <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarManu"aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarManu">
+                <ul class="navbar-nav ml-auto text-center">
+                        <li class="nav-item">
+                            <a href="analyzer.html" class="nav-link">Analyzer</a>
+                        </li>
+                        <li clas="nav-item">
+                            <a href="#" class="nav-link">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">Contect Us</a>
+                        </li>
+                    </ul>
                 </div>
-            </nav>
+            </div>
+        </nav>
         </header>
-        <div class="container text-center welcome-note">
-            <h2>Welcome to Browser Analyzer</h2>
-            <h3>See what data is exposed from your browser</h3>
-            <button class="button button1" id="button_1"><a>Scane Now</a></button>
-        </div>    
+
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container text-center">
+                <h1 class="display-4">Welcome To Browser Analyzer</h1>
+                <p class="lead">Let's see what data is exposed from your browser.</p>
+                <button type="button" class="btn btn-outline-primary btn-lg" id="myBtn">Scan Now</button>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+        <!-- My JavaScript -->
+        <script src="js/index.js"></script>
     </body>
 </html>
