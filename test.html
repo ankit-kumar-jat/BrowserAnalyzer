@@ -8,6 +8,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <!-- My css -->
+        <link rel="stylesheet" href="css/main.css">
         <title>Browser Analyzer</title>
         <script>
             var ipv4api = "https://api.ipify.org?format=json"
@@ -45,13 +46,28 @@
 	        </ul>
 	        <div class="tab-content" id="myTabContent">
 		        <div class="tab-pane fade show active" id="basicInfo" role="tabpanel" aria-labelledby="basicInfo-tab">
-		        Basic Info Here
-
+		        <br>
+                <br>
+                <p><strong>Javascript, iframes, ActiveX,</strong> and <strong>Flash</strong> all allow code to be executed in your browser, which can be a security vulnerability. You can certainly do without ActiveX and Flash, which infamously contain numerous bugs and vulnerabilities. Javascript and iframes can also be disabled, but you may find browsing the web without them a hindrance as many popular sites use them these days.</p>
+                <br>
+                <p class="info">
+                When you opened this page, we attempted to generate a popup to test whether your browser blocked it. Popups are not only annoying, they are often malicious.</p>
+                <p class="exclamation">
+                    <strong>Do Not Track</strong> is a setting in most web browsers that opt you out of tracking programs. While it’s good practice to turn this on, not all websites and advertisers abide by it.</p>
 
 
 		    	</div>
 		        <div class="tab-pane fade" id="browserSystemInfo" role="tabpanel" aria-labelledby="browserSystemInfo-tab">
-		        Browser &amp; Syatem Info Here
+                    <h2>Browser &amp; Syatem Info</h2>
+                    <h2>1. Browser Features:</h2>
+                    <div id="browserFeatures">
+                    </div>
+                    <h2>2. Browser Capabilities:</h2>
+                    <div id="browserCapabilities">
+                    </div>
+                    <h2>3: System Information:</h>
+                    <div id="systemInfo">
+                    </div>
 
 
 
@@ -73,24 +89,12 @@
 		    	</div>
 	        </div>
         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <!-- My JavaScript -->
+        <script src="js/data.js"></script>
     </body>
 </html>

@@ -15,6 +15,7 @@
             var ipv4api = "https://api.ipify.org?format=json"
             var ipv6api = "https://api6.ipify.org?format=json"
             var iplocationapi = "http://ip-api.com/json/"
+            var iplocationapihttps = "https://api.ipdata.co/?api-key=test"
         </script>
         <link rel="shortcut icon" href="assets/brand/logo.svg" type="image/x-icon">
         <link href='https://fonts.googleapis.com/css?family=Pangolin' rel='stylesheet'>
@@ -96,10 +97,90 @@
                             </div>
                         </div>
                         <div class="tab-pane fade" id="browserSystemInfo" role="tabpanel" aria-labelledby="browserSystemInfo-tab">
-                        Browser &amp; Syatem Info Here
+                            <div class="text-left" id="browserSystem-scan"> 
+                                <br>
+                                <h2>Browser &amp; Syatem Info</h2>
+                                <br>
+                                <div id="browserFeatures">
+                                	<table class="table table-hover">
+									  	<tbody>
+									    	<tr>
+									      		<td>Operating System</td>
+									      		<td id="OS"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Effective Screen Resolution</td>
+									      		<td id="resolution"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Color Depth</td>
+									      		<td id="colorDepth"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Lanuage</td>
+									      		<td id="language"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Preferred Language Order</td>
+									      		<td id="languageOrder"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Browser Date &amp; Time</td>
+									      		<td id="dateTime"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Cookie</td>
+									      		<td id="cookie"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Browser Vendor</td>
+									      		<td id="browserVendor"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Device</td>
+									      		<td id="device"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>System Logical Processors</td>
+									      		<td id="hardwareConcurrency"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>WEBGLVendor</td>
+									      		<td id="WEBGLVendor"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>WEBGLRanderer</td>
+									      		<td id="WEBGLRanderer"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>System RAM</td>
+									      		<td id="deviceMemory"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Connection</td>
+									      		<td id="connection"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Power Status</td>
+									      		<td id="powerStatus"></td>
+									    	</tr>
+									    	<tr>
+									      		<td>Touch Screen</td>
+									      		<td id="touchScreen"></td>
+									    	</tr>
+									  	</tbody>
+									</table>
+                                </div>
+                                <br>
+                                <h2>Browser Capabilities:</h2>
+                                <div id="browserCapabilities">
+                                </div>
+                                <br>
+                                <h2>Browser Request Parameters:</h2>
+                                <div id="browserRequestParams">
 
-
-
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="userAccountInfo" role="tabpanel" aria-labelledby="userAccountInfo-tab">
                         User Account Test Here
@@ -139,6 +220,8 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer=""></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" defer=""></script>
         <!-- My JavaScript -->
+        <script src="js/fingerprint2.min.js" defer=""></script>
+        <script src="js/detect.js" defer=""></script>
         <script src="js/data.js" defer=""></script>
         <script src="js/analyzer.js" defer=""></script>
     </body>

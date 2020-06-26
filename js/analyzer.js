@@ -10,8 +10,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     async function startScan(){
 
+        if (navigator.maxTouchPoints > 0){
+            BrowserSystemInfo.touchScreen = "True";
+        } else{
+            BrowserSystemInfo.touchScreen = "False";
+        }
         basicData.os = navigator.platform;
-        basicData.resolution = window.screen.width + "x" + window.screen.height;
+        basicData.resolution = window.browserInfo.screen;
         // devicename and batteryPercentage
     	if(window.orientation > -1){
     		basicData.device = "Mobile";
@@ -22,6 +27,11 @@ window.addEventListener('DOMContentLoaded', (event) => {
     	if(typeof navigator.getBattery === "function"){
     		navigator.getBattery().then(function(battery) {
                 basicData.batteryPercentage = battery.level*100+"%";
+                if(battery.charging){
+                    BrowserSystemInfo.powerStatus = "Connected Charging";
+                } else{
+                    BrowserSystemInfo.powerStatus = "Disconnected";
+                }
     		});
     	}
 
@@ -49,6 +59,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.userIPv6 = data.ip;
             }
         });
+        /*
         await jQuery.ajax({
     	    type: "GET",
             url: iplocationapi,
@@ -59,6 +70,23 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.cityName = data.city;
                 basicData.isp = data.isp;
                 basicData.userIPv4 = data.query;
+                basicData.api_response = data;
+            }
+        });
+        */
+
+        await jQuery.ajax({
+    	    type: "GET",
+            url: iplocationapihttps,
+            datatype: "json",
+            success: function(data){
+                basicData.countryName = data.country_name;
+                basicData.regionName = data.region;
+                basicData.cityName = data.city;
+                basicData.isp = data.asn.name;
+                basicData.userIPv4 = data.ip;
+                basicData.tor = data.threat.is_tor;
+                basicData.proxy = data.threat.is_proxy;
                 basicData.api_response = data;
             }
         });
@@ -79,6 +107,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
         else {
             userInfo += "</div></p>";
         }
+        if(basicData.tor || basicData.proxy){
+            if (basicData.tor){
+                userInfo += "<p>You are using <strong>Tor </strong>to hide yourself from internet threats.</p>";
+            } else{
+                userInfo += "<p>You are using <strong>Proxy </strong>to hide yourself from internet threats.</p>";
+            }
+        }
         document.getElementById("userinfo").innerHTML = userInfo;
         document.getElementById("scanning").style.display = 'none';
         if (window.matchMedia("(max-width: 991.98px)").matches) {
@@ -89,5 +124,41 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		}
         document.getElementById("basic-scan").style.display = 'block';
         document.location='#scanInfoShow';
+        await browserSystemScan();
+        await browserCapabilities();
     }
+
+    function browserSystemScan(){
+        document.getElementById("OS").innerHTML = BrowserSystemInfo.userOS;
+        document.getElementById("resolution").innerHTML = BrowserSystemInfo.resolution;
+        document.getElementById("colorDepth").innerHTML = BrowserSystemInfo.colorDepth;
+        document.getElementById("language").innerHTML = BrowserSystemInfo.userLanguage;
+        document.getElementById("languageOrder").innerHTML = BrowserSystemInfo.userLanguageOrder;
+        document.getElementById("dateTime").innerHTML = BrowserSystemInfo.userDateTime;
+        if (navigator.cookieEnabled){
+            document.getElementById("cookie").innerHTML = "Enable";
+        } else{
+            document.getElementById("cookie").innerHTML = "Disable";
+        }
+        document.getElementById("browserVendor").innerHTML = BrowserSystemInfo.browserVendor;
+        document.getElementById("device").innerHTML = basicData.device;
+        document.getElementById("hardwareConcurrency").innerHTML = BrowserSystemInfo.logicalProcessors;
+        document.getElementById("WEBGLVendor").innerHTML = BrowserSystemInfo.webglVendor;
+        document.getElementById("WEBGLRanderer").innerHTML = BrowserSystemInfo.webglRenderer;
+        if (BrowserSystemInfo.userDeviceMemory == 'undefined GB'){
+            document.getElementById("deviceMemory").innerHTML = '';
+        } else{
+            document.getElementById("deviceMemory").innerHTML = BrowserSystemInfo.userDeviceMemory;
+        }
+        document.getElementById("powerStatus").innerHTML = BrowserSystemInfo.powerStatus;
+        document.getElementById("touchScreen").innerHTML = BrowserSystemInfo.touchScreen;
+        document.getElementById("connection").innerHTML = BrowserSystemInfo.connection;
+    };
+
+    function browserCapabilities(){
+        document.getElementById("browserCapabilities").innerHTML = BrowserSystemInfo.browserCapabilities;
+    }
+
+
 });
+
