@@ -15,7 +15,7 @@
             var ipv6api = "https://api6.ipify.org?format=json"
             var iplocationapi = "http://ip-api.com/json/"
         </script>
-        <link rel="shortcut icon" href="assets/logo/logo.svg" type="image/x-icon">
+        <link rel="shortcut icon" href="assets/brand/logo.svg" type="image/x-icon">
         <link href='https://fonts.googleapis.com/css?family=Pangolin' rel='stylesheet'>
     </head>
     <body>
@@ -66,26 +66,35 @@
                     <div id="browserCapabilities">
                     </div>
                     <h2>3: System Information:</h>
-                    <div id="systemInfo">
+                    <div id="systemInfo" class="network">
                     </div>
 
 
 
 		    	</div>
 		        <div class="tab-pane fade" id="userAccountInfo" role="tabpanel" aria-labelledby="userAccountInfo-tab">
-		        User Account Test Here
 
-
+                    <div id="loggedIn">
+                        <h2>No platform</h2>
+                        <p>(or maybe you've disabled third party cookies, or you are using something like Privacy Badger?)</p>
+                        <br><br><br>
+                    </div>
+                    <h3>You are not logged in to:</h3>
+                    <div id="notLoggedIn"></div>
 		    	</div>
 		        <div class="tab-pane fade" id="autofillInfo" role="tabpanel" aria-labelledby="autofillInfo-tab">
 		        Autofill Info Here
-
 		    	
 		    	</div>
 		        <div class="tab-pane fade" id="fingerprintInfo" role="tabpanel" aria-labelledby="fingerprintInfo-tab">
-		        fingerprint Info Here
-
-
+		        <br>
+                <div id="user-unique-fingerprint">
+                </div>
+                <h4>Browser Fingerprint Details:</h4>
+                <table class="table table-hover table-responsive">
+                    <tbody id="browser-fingerprint-details">
+                    </tbody>
+                </table>
 		    	</div>
 	        </div>
         </div>
@@ -95,6 +104,8 @@
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
         <!-- My JavaScript -->
-        <script src="js/data.js"></script>
+        <script src="js/fingerprint2.min.js"></script>
+        <script src="js/userAccountsDetect.js" defer=""></script>
+        <script src="test.js" defer=""></script>
     </body>
 </html>

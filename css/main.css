@@ -9,3 +9,6 @@ body{
 .navbar-brand img{
     padding-bottom: 7px;
 }
+.alert{
+    display: inline-block;
+}

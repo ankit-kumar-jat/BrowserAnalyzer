@@ -753,9 +753,6 @@ var detect = {
 		
 		return language;
 	},
-	userLang: function () {
-		return navigator.language.toLowerCase();
-	},
 	pupupBlocked: function(){
 		var blocked = '';
 		var popup_window=window.open("https://www.google.com","myWindow","toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=yes, width=400, height=400");            
@@ -785,15 +782,6 @@ var detect = {
 		   	statusWebRtc = 'Disable';
 		}
 		return statusWebRtc;
-	},
-	javaCheck: function(){
-		var javaStatus = '';
-		if (navigator.javaEnable){
-			javaStatus = 'Enable';
-		} else{
-			javaStatus = 'Disable';
-		}
-		return javaStatus;
 	},
 	activexCheck: function(){
 		var activexStatus = '';

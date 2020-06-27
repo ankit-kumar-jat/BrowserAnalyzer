@@ -176,51 +176,76 @@
                                 <div id="browserCapabilities">
                                 </div>
                                 <br>
-                                <h2>Browser Request Parameters:</h2>
-                                <div id="browserRequestParams">
-
+                                <h2>Other Plugins</h2>
+                                <div id="otherPlugins">
+                                </div>
+                                <div id="Plugins">
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="userAccountInfo" role="tabpanel" aria-labelledby="userAccountInfo-tab">
-                        User Account Test Here
-
-
+                            <br>
+                            <h2>User Accounts Info</h2>
+                            <br>
+                            <p>This test checks your browser for artifacts that show what accounts you’re logged into. We test for several of the most popular sites and apps on the web. Hackers can use this information to see account usernames, email addresses, search terms, titles of viewed emails and documents, and downloaded files. The exact information varies depending on the website or service. Knowing where you’re logged in makes you an easier target for phishing and hacking attempts. For example, if you use the same password for all your accounts (you shouldn’t), then a hacker who steals it could easily hijack all your accounts in a very short span of time.</p>
+                            <h4>Our test shows you are logged into the following sites:</h4>
+                            <div id="loggedIn">
+                                <h3>No platform</h3>
+                                <p>(or maybe you've disabled third party cookies, or you are using something like Privacy Badger?)</p>
+                                <br><br><br>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="autofillInfo" role="tabpanel" aria-labelledby="autofillInfo-tab">
-                        Autofill Info Here
+                            <br>
+                            <h2>Autofill Info</h2>
+                            <br>
+                            <h4>PLEASE SELECT YOUR STATE/REGION FROM DROPDOWN BELOW:</h4>
 
-                        
+
+                            <p>Websites can use autofill to trick you into giving up information. By simply selecting your region or state from the dropdown menu, the website can take advantage of your browser’s autofill capabilities to gather far more personal data. Don’t worry; none of your data will leave or be collected from your device in this demonstration.</p>
+                            <br>
+                            <p>If no dropdown appears when you clicked above, it means your browser appears to have autofill disabled, so you are not at risk of this vulnerability.</p>
+                            <p>Your browser or password manager’s autofill might be inadvertently giving away your information to unscrupulous phishers using hidden text boxes on sites. Read more on this vulnerability</p>
+                            <div id="autofillTest">
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="fingerprintInfo" role="tabpanel" aria-labelledby="fingerprintInfo-tab">
-                        fingerprint Info Here
-
-
+                            <br>
+                            <h2>fingerprint Info</h2>
+                            <br>
+                            <p>This test gathers all of the little bits of information stored in your browser that, on their own, don’t mean much. When combined, however, they can form a “fingerprint” so distinct that it could only plausibly match one person or a very small group of people. This tactic, called “canvas fingerprinting,” makes it possible for websites to identify track you without the use of cookies or IP addresses.</p>
+                            <div id="user-unique-fingerprint">
+                            </div>
+                            <h4>Browser Fingerprint Details:</h4>
+                            <br>
+                            <table class="table table-hover table-responsive">
+                                <tbody id="browser-fingerprint-details">
+                                </tbody>
+                            </table>
+                            <br>
+                            <br>
+                            <br>
+                            <hr>
+                            <p>This whole project is available on GitHub under GNU GENERAL PUBLIC LICENSE V3. Feel free to contribute.</p>
+                            <p><a href="https://github.com/ankit-kumar-jat/BrowserAnalyzer">https://github.com/ankit-kumar-jat/BrowserAnalyzer</a></p>
+                            <hr>
+                            <br>
+                            <br>
+                            <hr>
+                            <p>This fingerprinting tool is also available on GitHub <a href="https://github.com/fingerprintjs/fingerprintjs2">https://github.com/fingerprintjs/fingerprintjs2</a></p>
+                            <hr>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
         <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer=""></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" defer=""></script>
         <!-- My JavaScript -->
+        <script src="js/pluginDetect.js" defer=""></script>
         <script src="js/fingerprint2.min.js" defer=""></script>
+        <script src="js/userAccountsDetect.js" defer=""></script>
         <script src="js/detect.js" defer=""></script>
         <script src="js/data.js" defer=""></script>
         <script src="js/analyzer.js" defer=""></script>

@@ -59,7 +59,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.userIPv6 = data.ip;
             }
         });
-        /*
         await jQuery.ajax({
     	    type: "GET",
             url: iplocationapi,
@@ -73,8 +72,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.api_response = data;
             }
         });
-        */
 
+        /*
         await jQuery.ajax({
     	    type: "GET",
             url: iplocationapihttps,
@@ -87,12 +86,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.userIPv4 = data.ip;
                 basicData.tor = data.threat.is_tor;
                 basicData.proxy = data.threat.is_proxy;
+                basicData.anonymous = data.threat.is_anonymous;
                 basicData.api_response = data;
             }
         });
+        */
 
         //build userInfo
-        userInfo += "<br><p><div class='your-ip-here'><h3>Your IP Address: </h3>IPv4: <div class='ip alert alert-primary' role='alert'>"+ basicData.userIPv4 +"</div>IPv6: <div class='ip alert alert-primary' role='alert'>"+ basicData.userIPv6 +"</div>";
+        userInfo += "<br><p><div class='your-ip-here'><h3>Your IP Address: </h3>IPv4: <div class='ip alert alert-info' role='alert'>"+ basicData.userIPv4 +"</div><br>IPv6: <div class='ip alert alert-info' role='alert'>"+ basicData.userIPv6 +"</div><br>";
         userInfo += "According to your IP address";
     	if(basicData.countryName != null){
             userInfo += " you are located in <strong>"+ basicData.cityName +", "+ basicData.regionName +", "+ basicData.countryName +"</strong>";
@@ -107,11 +108,14 @@ window.addEventListener('DOMContentLoaded', (event) => {
         else {
             userInfo += "</div></p>";
         }
-        if(basicData.tor || basicData.proxy){
+        if(basicData.tor || basicData.proxy || basicData.anonymous){
             if (basicData.tor){
-                userInfo += "<p>You are using <strong>Tor </strong>to hide yourself from internet threats.</p>";
-            } else{
-                userInfo += "<p>You are using <strong>Proxy </strong>to hide yourself from internet threats.</p>";
+                userInfo += "<p>You are using <strong>Tor or VPN </strong>to hide yourself from internet threats.</p>";
+            } else if (basicData.proxy){
+                userInfo += "<p>You are using <strong>Proxy or VPN </strong>to hide yourself from internet threats.</p>";
+            }
+            else if (basicData.anonymous){
+                userinfo += "<p>You are using <strong>VPN </strong>to hide yourself from internet threats.</p>"; 
             }
         }
         document.getElementById("userinfo").innerHTML = userInfo;
@@ -157,6 +161,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
     function browserCapabilities(){
         document.getElementById("browserCapabilities").innerHTML = BrowserSystemInfo.browserCapabilities;
+        document.getElementById("otherPlugins").innerHTML = BrowserSystemInfo.userPlugins;
+        document.getElementById("Plugins").innerHTML = BrowserSystemInfo.pluginsInfo;
     }
 
 

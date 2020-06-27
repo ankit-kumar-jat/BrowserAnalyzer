@@ -206,7 +206,9 @@ var BrowserSystemInfo = {
     touchScreen: '',
     connection: '',
     saveData: '',
-    browserCapabilities: ''
+    browserCapabilities: '',
+    userPlugins: '',
+    pluginsInfo: ''
 }
 
 var WebGL = new Fingerprint2().getWebglCanvas();
@@ -225,11 +227,47 @@ if (navigator.connection){
     }
     BrowserSystemInfo.connection += "<table><tr><td>Effective Network Type</td><td>" + navigator.connection.effectiveType  + "</td></tr><tr><td>Round Trip Time</td><td>" + navigator.connection.rtt + " ms</td></tr><tr><td>Effective BandWidth</td><td>" + navigator.connection.downlink + " Mbps</td></tr><tr><td>Save Data</td><td>" + BrowserSystemInfo.saveData + "</td></tr></table>";
 }
-BrowserSystemInfo.browserCapabilities += "<br><table class='table table-hover'><tbody><tr><td>Iframes</td><td>" + detect.iframCheck() + "</td><td>Activexcontrols</td><td>" + detect.activexCheck() + "</td></tr><tr><td>Java</td><td>" + detect.javaCheck() + "</td><td>WebRTC Status</td><td>" + detect.webRTCcheck() + "</td></tr><tr><td>Do Not Track</td><td>" + detect.doNotTrack() + "</td><td>Popup Blocker</td><td>" + detect.pupupBlocked() + "</td></tr></tbody></table>";
+BrowserSystemInfo.browserCapabilities += "<br><table class='table table-hover'><tbody><tr><td>Iframes</td><td>" + detect.iframCheck() + "</td><td>Activexcontrols</td><td>" + detect.activexCheck() + "</td></tr><tr><td>Javascript</td><td>" + "Enable" + "</td><td>WebRTC Status</td><td>" + detect.webRTCcheck() + "</td></tr><tr><td>Do Not Track</td><td>" + detect.doNotTrack() + "</td><td>Popup Blocker</td><td>" + detect.pupupBlocked() + "</td></tr></tbody></table>";
 BrowserSystemInfo.browserCapabilities += "<br><p><strong>Javascript, iframes, ActiveX,</strong> and <strong>Flash</strong> all allow code to be executed in your browser, which can be a security vulnerability. You can certainly do without ActiveX and Flash, which infamously contain numerous bugs and vulnerabilities. Javascript and iframes can also be disabled, but you may find browsing the web without them a hindrance as many popular sites use them these days.</p>";
+BrowserSystemInfo.browserCapabilities += "<br><i class='glyphicon glyphicon-info-sign'></i><p>When you opened this page, we attempted to generate a popup to test whether your browser blocked it. Popups are not only annoying; they are often malicious.</p>";
+BrowserSystemInfo.browserCapabilities += "<p><strong>Do Not Track</strong> is a setting in most web browsers that opt you out of tracking programs. While it’s good practice to turn this on, not all websites and advertisers abide by it.</p>";
+// userPlugins
+var otherPlugins = window.PluginDetect.Plugins;
+var plugins = {
+    java: 'Not Installed',
+    flash: 'Not Installed',
+    quicktime: 'Not Installed',
+    shockwave: 'Not Installed',
+    silverlight: 'Not Installed',
+    vlc: 'Not Installed',
+    windowsmediaplayer: 'Not Installed',
+    devalvr: 'Not Installed'
+}
+for (var plug in plugins){
+    if(otherPlugins[plug].installed){
+        plugins[plug] = 'Installed';
+    }
+}
 
+BrowserSystemInfo.userPlugins += "<br><table class='table table-hover table-responsive'><tbody>"
+BrowserSystemInfo.userPlugins += "<tr><td>Java</td><td>" + plugins.java + " </td></tr>";
+BrowserSystemInfo.userPlugins += "<tr><td>Flash Player</td><td>" + plugins.flash + "</td></tr>";
+BrowserSystemInfo.userPlugins += "<tr><td>QuickTime Player</td><td>" + plugins.quicktime + "</td></tr>";
+BrowserSystemInfo.userPlugins += "<tr><td>Shockwave Player</td><td>" + plugins.shockwave + "</td></tr>";
+BrowserSystemInfo.userPlugins += "<tr><td>Silverlight</td><td>" + plugins.silverlight + "</td></tr>";
+BrowserSystemInfo.userPlugins += "<tr><td>VLC Player</td><td>" + plugins.vlc + "</td></tr>";
+BrowserSystemInfo.userPlugins += "<tr><td>Windows Media Player</td><td>" + plugins.windowsmediaplayer + "</td></tr>";
+BrowserSystemInfo.userPlugins += "<tr><td>DevalVR</td><td>" + plugins.devalvr + "</td></tr>";
+BrowserSystemInfo.userPlugins += "</tbody></table>"
 
-
+if (navigator.plugins.length > 0){
+    BrowserSystemInfo.pluginsInfo += "<br><div class='alert alert-danger' role='alert'><p>You are using <strong>";
+	for(var i=0; i<navigator.plugins.length; i++){
+		BrowserSystemInfo.pluginsInfo += "'"+navigator.plugins[i][0].enabledPlugin.name+"', ";
+	}
+	BrowserSystemInfo.pluginsInfo = BrowserSystemInfo.pluginsInfo.slice(0,-2).replace(/,(?=[^,]*$)/, ' and')+"</strong>";
+    BrowserSystemInfo.pluginsInfo += " in your browser. If any site knows this information, vulnerabilities in these plugins can be exploited by hackers to open a backdoor to your system.</p></div>"
+}
 
 var userInfo = "";
 var basicData = {
@@ -246,5 +284,64 @@ var basicData = {
     resolution: null,
     api_response: null,
     tor: null,
-    proxy: null
+    proxy: null,
+    anonymous: null
 };
+
+//social media leaks
+var isFirstLoggedIn = true;
+
+function displayResult(network, loggedIn) {
+    var id = loggedIn ? 'loggedIn' : 'notLoggedIn';
+    var favicon = faviconUri(network);
+    var url = network.domain + network.redirect;
+    var el = '<a target="_blank" href="' + url + '" target="_blank" class=network><img src=' + favicon + '><span>' + network.name + '</span></a>';
+    if (loggedIn && isFirstLoggedIn) {
+        isFirstLoggedIn = false;
+        document.getElementById(id).innerHTML = el;
+    } else {
+        document.getElementById(id).innerHTML += el;
+    }
+}
+leakSocialMediaAccounts(displayResult);
+
+function faviconUri(network) {
+    var favicon = network.domain + '/favicon.ico';
+    if (network.name === 'Dropbox') {
+        favicon = 'https://www.dropbox.com/static/images/favicon.ico';
+    }
+    if (network.name === 'Youtube') {
+        favicon = 'https://www.youtube.com/favicon.ico';
+    }
+    if (network.name === 'Gmail') {
+        favicon = 'https://mail.google.com/favicon.ico';
+    }
+    return favicon;
+}
+
+//fingerprint Info
+//
+var fingerprintDiv = document.getElementById('browser-fingerprint-details');
+var data_fingerprint ='' ;
+// if ( typeof Fingerprint2 === 'undefined' ) {
+//     $( '#user-basic-info .preloader-gif' ).css( 'display', 'none' );
+//     return;
+// }
+new Fingerprint2().get(function(result, components) {
+    components.forEach(function(element){
+        if(element.key == 'webgl' ||  element.key == 'canvas'){
+            // data_fingerprint += "<tr><td><b>"+ element.key+'</td></tr>';
+            // data_fingerprint += "<tr><td><b>"+ element.key +": </b> </td> <td class=\"value\">" + element.value +'</td></tr>';
+        }else{
+            data_fingerprint += "<tr><td>"+ element.key +": </td><td class=\"value\">" + element.value +'</td></tr>';
+        }   
+    });
+    fingerprintDiv.innerHTML  = data_fingerprint;   
+});
+new Fingerprint2().get(function(result, components_arr) {
+    var components = "";
+    var f_print = document.getElementById('user-unique-fingerprint');
+    f_print.innerHTML += "<h3>Canvas Fingerprinting</h3>"
+    f_print.innerHTML += "<p>Based on below details here is your unique canvas fingerprint :</p><div class='alert alert-success' role='alert'>"+result+"</div>";
+    f_print.innerHTML += "<p>which means that I will be able to identify you even if you don't have a cookie stored in your system.</p>";
+});
