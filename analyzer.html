@@ -200,14 +200,38 @@
                             <h2>Autofill Info</h2>
                             <br>
                             <h4>PLEASE SELECT YOUR STATE/REGION FROM DROPDOWN BELOW:</h4>
-
-
+                            <div>
+			                    <input required="" id="state" name="state" type="text" class="btn btn-default" placeholder="Select Your State/Province" tabindex="1" autocomplete="region">
+			                    <br>
+			                    <input id="city" name="city" type="text" placeholder="city" autocomplete="locality">
+			                    <br>
+			                    <input id="email" name="email" type="email" placeholder="email" autocomplete="email">
+			                    <input id="street" name="street" type="text" placeholder="street" autocomplete="street-address">
+			                    <input id="postal" name="postal" type="text" placeholder="postal-code" autocomplete="postal-code">
+			                    <input id="phone" name="phone" type="text" placeholder="phone No." autocomplete="tel">
+			                </div>
+                            <br>
                             <p>Websites can use autofill to trick you into giving up information. By simply selecting your region or state from the dropdown menu, the website can take advantage of your browser’s autofill capabilities to gather far more personal data. Don’t worry; none of your data will leave or be collected from your device in this demonstration.</p>
                             <br>
-                            <p>If no dropdown appears when you clicked above, it means your browser appears to have autofill disabled, so you are not at risk of this vulnerability.</p>
-                            <p>Your browser or password manager’s autofill might be inadvertently giving away your information to unscrupulous phishers using hidden text boxes on sites. Read more on this vulnerability</p>
-                            <div id="autofillTest">
-                            </div>
+                            <div id="after-autofill" style="display: none;">
+					            <div id="country-search-box" style="display: none;"></div>
+					            <div id="autofill-true" style="display: none;">
+					                <h4>Just by entering  your state or province, we know:</h4>
+					                <ul>
+					                    <li class="leaked-data" id="mail-id">is your email address.</li>
+					                    <li class="leaked-data" id="address-res">is you street address.</li>
+					                    <li class="leaked-data" id="phone-res">is your phone number.</li>
+					                    <li class="leaked-data" id="postal-res">is your postal code.</li>
+					                    <li class="leaked-data" id="city-res">is your city.</li>
+					                </ul>
+					                <p>(None of your data will leave/or collected from your device in any demo available on this site.)</p>
+					            </div>
+					            <div id="autofill-false" style="display: none;">
+					                <p style="padding:0 10%;">Either you didn't select your state yet from the box above or Your browser appears to have autofill disabled, so you are not at risk of this vulnerability.</p>
+					            </div>
+				            </div>
+				            <p id="no-autofill">If <strong>no dropdown</strong> appears when you clicked above, it means your browser appears to have autofill disabled, so you are not at risk of this vulnerability.</p>
+				            <p>Your browser or password manager’s autofill might be inadvertently giving away your information to unscrupulous phishers using hidden text boxes on sites. <a href="https://www.theguardian.com/technology/2017/jan/10/browser-autofill-used-to-steal-personal-details-in-new-phising-attack-chrome-safari" target="_blank">Read more on this vulnerability</a></p>
                         </div>
                         <div class="tab-pane fade" id="fingerprintInfo" role="tabpanel" aria-labelledby="fingerprintInfo-tab">
                             <br>
@@ -227,12 +251,12 @@
                             <br>
                             <hr>
                             <p>This whole project is available on GitHub under GNU GENERAL PUBLIC LICENSE V3. Feel free to contribute.</p>
-                            <p><a href="https://github.com/ankit-kumar-jat/BrowserAnalyzer">https://github.com/ankit-kumar-jat/BrowserAnalyzer</a></p>
+                            <p><a href="https://github.com/ankit-kumar-jat/BrowserAnalyzer" target="_blank">https://github.com/ankit-kumar-jat/BrowserAnalyzer</a></p>
                             <hr>
                             <br>
                             <br>
                             <hr>
-                            <p>This fingerprinting tool is also available on GitHub <a href="https://github.com/fingerprintjs/fingerprintjs2">https://github.com/fingerprintjs/fingerprintjs2</a></p>
+                            <p>This fingerprinting tool is also available on GitHub <a href="https://github.com/fingerprintjs/fingerprintjs2" target="_blank">https://github.com/fingerprintjs/fingerprintjs2</a></p>
                             <hr>
                         </div>
                     </div>

@@ -15,5 +15,6 @@ input#state {
     margin-top: 15px;
 }
 input#city,input#email,input#street,input#postal,input#phone{
-    top: -1000;
+    position: absolute;
+    top: -999px;
 }

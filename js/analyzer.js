@@ -59,6 +59,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.userIPv6 = data.ip;
             }
         });
+
         /*
         await jQuery.ajax({
     	    type: "GET",
@@ -74,7 +75,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
         });
         */
-
+        
         await jQuery.ajax({
     	    type: "GET",
             url: iplocationapihttps,
@@ -91,6 +92,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.api_response = data;
             }
         });
+        
 
         //build userInfo
         userInfo += "<br><p><div class='your-ip-here'><h3>Your IP Address: </h3>IPv4: <br class='ip-br'><div class='ip alert alert-info' role='alert'>"+ basicData.userIPv4 +"</div><br>IPv6: <br class='ip-br'><div class='ip alert alert-info' role='alert'>"+ basicData.userIPv6 +"</div><br>";
