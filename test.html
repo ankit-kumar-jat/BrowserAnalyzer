@@ -9,6 +9,7 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
         <!-- My css -->
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="test.css">
         <title>Browser Analyzer</title>
         <script>
             var ipv4api = "https://api.ipify.org?format=json"
@@ -83,7 +84,48 @@
                     <div id="notLoggedIn"></div>
 		    	</div>
 		        <div class="tab-pane fade" id="autofillInfo" role="tabpanel" aria-labelledby="autofillInfo-tab">
-		        Autofill Info Here
+		        <div>
+                    <input required="" id="state" name="state" type="text" class="btn btn-default" placeholder="Select Your State/Province" tabindex="1" autocomplete="region">
+                    <br>
+                    <input id="city" name="city" type="text" placeholder="city" autocomplete="locality">
+                    <br>
+                    <input id="email" name="email" type="email" placeholder="email" autocomplete="email">
+                    <input id="street" name="street" type="text" placeholder="street" autocomplete="street-address">
+                    <input id="postal" name="postal" type="text" placeholder="postal-code" autocomplete="postal-code">
+                    <input id="phone" name="phone" type="text" placeholder="phone No." autocomplete="tel">
+                </div>
+                <div id="after-autofill" style="display: none;">
+                <div id="country-search-box" style="display: none;"></div>
+                <div class="res-box" id="autofill-true" style="display: none;">
+                    <h4>Just by entering  your state or province, we know:</h4>
+                    <ul>
+                        <li class="leaked-data" id="mail-id">is your email address.</li>
+                        <li class="leaked-data" id="address-res">is you street address.</li>
+                        <li class="leaked-data" id="phone-res">is your phone number.</li>
+                        <li class="leaked-data" id="postal-res">is your postal code.</li>
+                        <li class="leaked-data" id="city-res">is your city.</li>
+                    </ul>
+                    <p>(None of your data will leave/or collected from your device in this demo)</p>
+                </div>
+                <div class="res-box" id="autofill-false" style="display: none;">
+                    <p style="padding:0 20px;">Either you didn't select your state yet from the box above or Your browser appears to have autofill disabled, so you are not at risk of this vulnerability.</p>
+                </div>
+            </div>
+            <p id="no-autofill" class="info">
+                If <span style="color:red;">no dropdown</span>
+                appears when you clicked above, it means your browser appears to have autofill disabled, so you are not at risk of this vulnerability.
+            </p>
+            <p class="exclamation">
+                Your browser or password manager’s autofill might be inadvertently giving away your information to unscrupulous phishers using hidden text boxes on sites. <a href="https://www.theguardian.com/technology/2017/jan/10/browser-autofill-used-to-steal-personal-details-in-new-phising-attack-chrome-safari" target="_blank" class="red">Read more on this vulnerability</a>
+            </p>
+
+
+
+
+
+
+
+
 		    	
 		    	</div>
 		        <div class="tab-pane fade" id="fingerprintInfo" role="tabpanel" aria-labelledby="fingerprintInfo-tab">

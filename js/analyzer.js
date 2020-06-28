@@ -59,6 +59,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.userIPv6 = data.ip;
             }
         });
+        /*
         await jQuery.ajax({
     	    type: "GET",
             url: iplocationapi,
@@ -72,8 +73,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.api_response = data;
             }
         });
+        */
 
-        /*
         await jQuery.ajax({
     	    type: "GET",
             url: iplocationapihttps,
@@ -90,10 +91,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.api_response = data;
             }
         });
-        */
 
         //build userInfo
-        userInfo += "<br><p><div class='your-ip-here'><h3>Your IP Address: </h3>IPv4: <div class='ip alert alert-info' role='alert'>"+ basicData.userIPv4 +"</div><br>IPv6: <div class='ip alert alert-info' role='alert'>"+ basicData.userIPv6 +"</div><br>";
+        userInfo += "<br><p><div class='your-ip-here'><h3>Your IP Address: </h3>IPv4: <br class='ip-br'><div class='ip alert alert-info' role='alert'>"+ basicData.userIPv4 +"</div><br>IPv6: <br class='ip-br'><div class='ip alert alert-info' role='alert'>"+ basicData.userIPv6 +"</div><br>";
         userInfo += "According to your IP address";
     	if(basicData.countryName != null){
             userInfo += " you are located in <strong>"+ basicData.cityName +", "+ basicData.regionName +", "+ basicData.countryName +"</strong>";
