@@ -70,7 +70,13 @@ input#state {
     padding: 10px;
     margin-top: 15px;
 }
-input#city,input#email,input#street,input#postal,input#phone{
+input#city,input#email,input#street,input#postal,input#phone,.pub_300x250,.cookistest{
     position: absolute;
     top: -999px;
+}
+.true{
+	color: green;
+}
+.false{
+	color: red;
 }

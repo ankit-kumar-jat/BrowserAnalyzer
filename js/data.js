@@ -295,11 +295,11 @@ function displayResult(network, loggedIn) {
     var id = loggedIn ? 'loggedIn' : 'notLoggedIn';
     var favicon = faviconUri(network);
     var url = network.domain + network.redirect;
-    var el = '<a target="_blank" href="' + url + '" target="_blank" class=network><img src=' + favicon + '><span>' + network.name + '</span></a>';
+    var el = '<div class="mt-3 mb-3 ml-3 mr-3 pt-1 pb-1 pl-3 pr-3 border border-primary rounded">  <a target="_blank" href="' + network.domain + '" target="_blank" class=network><p class="mb-0"><img src=' + favicon + ' width="32" height="32" alt="' + network.name + '">   ' + network.name + '</p></a></div>';
     if (loggedIn && isFirstLoggedIn) {
         isFirstLoggedIn = false;
         document.getElementById(id).innerHTML = el;
-    } else {
+    } else if(loggedIn){
         document.getElementById(id).innerHTML += el;
     }
 }
@@ -314,7 +314,10 @@ function faviconUri(network) {
         favicon = 'https://www.youtube.com/favicon.ico';
     }
     if (network.name === 'Gmail') {
-        favicon = 'https://mail.google.com/favicon.ico';
+        favicon = 'https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico';
+    }
+    if (network.name === 'Blogger') {
+        favicon = 'https://www.blogger.com/about/favicon/favicon.ico';
     }
     return favicon;
 }
@@ -358,7 +361,7 @@ function checkAutoFill() {
                $("#autofill-false").hide();
                q('no-autofill').style.display = "none";
                var leaked_email = q('email').value;
-               $("#mail-id").prepend("<span style='color:red;'>" + leaked_email + "</span>");
+               $("#mail-id").prepend("<span style='color:red;'>" + leaked_email + " </span>");
                q('autofill-true').style.display = "block";
                $("#next-step").show();
            } else {
@@ -367,7 +370,7 @@ function checkAutoFill() {
            if (q('phone').value.length > 0) {
                q('no-autofill').style.display = "none";
                var leaked_ph = q('phone').value;
-               $("#phone-res").prepend("<span style='color:red;'>" + leaked_ph + "</span>");
+               $("#phone-res").prepend("<span style='color:red;'>" + leaked_ph + " </span>");
                q('autofill-true').style.display = "block";
            } else {
                $("#phone-res").hide();
@@ -375,7 +378,7 @@ function checkAutoFill() {
            if (q('street').value.length > 0) {
                q('no-autofill').style.display = "none";
                var leaked_street = q('street').value;
-               $("#address-res").prepend("<span style='color:red;'>" + leaked_street + "</span>");
+               $("#address-res").prepend("<span style='color:red;'>" + leaked_street + " </span>");
                q('autofill-true').style.display = "block";
            } else {
                $("#address-res").hide();
@@ -383,7 +386,7 @@ function checkAutoFill() {
            if (q('postal').value.length > 0) {
                q('no-autofill').style.display = "none";
                var leaked_postal = q('postal').value;
-               $("#postal-res").prepend("<span style='color:red;'>" + leaked_postal + "</span>");
+               $("#postal-res").prepend("<span style='color:red;'>" + leaked_postal + " </span>");
                q('autofill-true').style.display = "block";
            } else {
                $("#postal-res").hide();
@@ -391,7 +394,7 @@ function checkAutoFill() {
            if (q('city').value.length > 0) {
                q('no-autofill').style.display = "none";
                var leaked_city = q('city').value;
-               $("#city-res").prepend("<span style='color:red;'>" + leaked_city + "</span>");
+               $("#city-res").prepend("<span style='color:red;'>" + leaked_city + " </span>");
                q('autofill-true').style.display = "block";
            } else {
                $("#city-res").hide();

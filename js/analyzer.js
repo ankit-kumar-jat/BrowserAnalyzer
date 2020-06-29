@@ -132,6 +132,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.location='#scanInfoShow';
         await browserSystemScan();
         await browserCapabilities();
+        // security test veriable
+        var browserSequrity = '';
+        //await securityTest();
     }
 
     function browserSystemScan(){
@@ -167,6 +170,60 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById("Plugins").innerHTML = BrowserSystemInfo.pluginsInfo;
     }
 
+    async function securityTest(){ 
+        //document.cookie = "ThirdPartyCookie=yes;";
+        //if (document.cookie.indexOf("ThirdPartyCookie=") > -1) {
+        //    browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed — You can be vulnerable to this attack.</span></td></tr>";
+        //} else {
+        //    browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed — You are not vulnerable to this attack.</span></td></tr>";
+        //}
+        var receiveMessage = function (evt) {
+            if (evt.data === '3PCunsupported') {
+                browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed — You are not vulnerable to this attack.</span></td></tr>";
+            } else if (evt.data === '3PCsupported') {
+                browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed — You can be vulnerable to this attack.</span></td></tr>";
+            }
+        };
+        window.addEventListener("message", receiveMessage, false);
+        ////Tracking Protection here
+        function adBlockDetected() {
+            console.log("detect ! ");
+            browserSequrity += "<tr><td>Ad Blocker</td><td><span class='true'>✔</span> Ad Blocker Enable - You are not vulnerable to this attack.</span></td></tr>";
+        }
+        function adBlockNotDetected() {
+            console.log("NotDetect ! ");
+            browserSequrity += "<tr><td>Ad Blocker</td><td><span class='false'>!</span> Ad Blocker Not Found - You can be vulnerable to this attack.</span></td></tr>";
+        }
+  //       if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
+		// 	adBlockDetected();
+		// } else {
+		// 	var importFAB = document.createElement('script');
+  //           importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+		// 	importFAB.crossOrigin = 'anonymous';
+		// 	importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
+		// 	importFAB.onload = function() {
+  //               console.log("NotDetect ! 2");
+  //               adBlockNotDetected();
+		// 		fuckAdBlock.onDetected(adBlockDetected)
+		// 		fuckAdBlock.onNotDetected(adBlockNotDetected);
+  //               console.log("NotDetect ! 2 full");
+		// 	};
+		// 	importFAB.onerror = function() {
+  //               console.log("detect ! 2 ");
+		// 		adBlockDetected();
+  //               condole.log("detect ! 2 full");
+		// 	};
+		// 	document.head.appendChild(importFAB);
+		// }
+        var loop = true;
+        var adblock = fuckAdBlock.check(loop);
+        if (adblock){
+            adBlockNotDetected();
+        }else{
+            adBlockDetected();
+        }
+        document.getElementById("browserSequrity").innerHTML = browserSequrity;
+    }
 
 });
 
