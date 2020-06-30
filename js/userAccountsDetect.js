@@ -135,6 +135,18 @@ var leakSocialMediaAccounts = function(callback) {
         domain: "https://vk.com",
         redirect: "/login?u=2&to=ZmF2aWNvbi5pY28-",
         name: "VK"
+    }, {
+        domain: "www.twitch.tv",
+        redirect: "/login?redirect_on_login=/favicon.ico",
+        name: "Twitch"
+    }, {
+        domain: "accounts.craigslist.org",
+        redirect: "/login?rt=L&rp=%2ffavicon.ico&step=confirmation",
+        name: "Craigslist"
+    }, {
+        domain: "www.imdb.com",
+        redirect: "/ap/signin?_encoding=UTF8&openid.assoc_handle=imdb_us&openid.claimed_id=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&openid.identity=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0%2fidentifier_select&openid.mode=checkid_setup&openid.ns=http%3a%2f%2fspecs.openid.net%2fauth%2f2.0&openid.pape.max_auth_age=10000000&openid.return_to=https%3a%2f%2fwww.imdb.com%2ffavicon.ico",
+        name: "IMDb"
     }];
 
     platforms.forEach(function(network) {

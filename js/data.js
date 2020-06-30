@@ -312,7 +312,7 @@ function faviconUri(network) {
         favicon = 'https://www.dropbox.com/static/images/favicon.ico';
     }
     if (network.name === 'Youtube') {
-        favicon = 'https://s.ytimg.com/yts/img/favicon_144-vfliLAfaB.png';
+        favicon = 'https://s.ytimg.com/yts/img/favicon_32-vflOogEID.png';
     }
     if (network.name === 'Gmail') {
         favicon = 'https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico';
@@ -320,6 +320,16 @@ function faviconUri(network) {
     if (network.name === 'Blogger') {
         favicon = 'https://www.blogger.com/about/favicon/favicon.ico';
     }
+    if (network.name === 'Meetup'){
+        favicon = 'https://www.meetup.com/mu_static/en-US/favicon.a6878039.ico';
+    }
+    if (network.name === 'Carbonmade'){
+        favicon = 'carbon-marketing.accelerator.net/wp-content/uploads/2019/04/favico2.png';
+    }
+    if (network.name === 'Battle.net'){
+        favicon = 'https://d9me64que7cqs.cloudfront.net/images/favicon.7732eed1be971ac1d7396ffbe6caf75e.ico';
+    }
+
     return favicon;
 }
 

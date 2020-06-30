@@ -4,6 +4,9 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById('scanning').style.display='block';
         document.location='#scanning';
         startScan();
+         // security test veriable
+        var browserSequrity = null;
+        securityTest();
     });
 
 
@@ -60,41 +63,59 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
         });
 
-        /*
-        await jQuery.ajax({
-    	    type: "GET",
-            url: iplocationapi,
-            datatype: "json",
-            success: function(data){
-                basicData.countryName = data.country;
-                basicData.regionName = data.regionName;
-                basicData.cityName = data.city;
-                basicData.isp = data.isp;
-                basicData.userIPv4 = data.query;
-                basicData.api_response = data;
-            }
-        });
-        */
-        
-        await jQuery.ajax({
-    	    type: "GET",
-            url: iplocationapihttps,
-            datatype: "json",
-            success: function(data){
-                basicData.countryName = data.country_name;
-                basicData.regionName = data.region;
-                basicData.cityName = data.city;
-                basicData.isp = data.asn.name;
-                basicData.userIPv4 = data.ip;
-                basicData.tor = data.threat.is_tor;
-                basicData.proxy = data.threat.is_proxy;
-                basicData.anonymous = data.threat.is_anonymous;
-                basicData.threat = data.threat;
-                basicData.api_response = data;
-            }
-        });
-        
-
+        try {
+	        await jQuery.ajax({
+	    	    type: "GET",
+	            url: iplocationapihttps,
+	            datatype: "json",
+	            success: function(data){
+	                basicData.countryName = data.country_name;
+	                basicData.regionName = data.region;
+	                basicData.cityName = data.city;
+	                basicData.isp = data.asn.name;
+	                basicData.userIPv4 = data.ip;
+	                basicData.tor = data.threat.is_tor;
+	                basicData.proxy = data.threat.is_proxy;
+	                basicData.anonymous = data.threat.is_anonymous;
+	                basicData.threat = data.threat;
+	                basicData.api_response = data;
+	            }
+	        });
+	    }catch{
+            try{
+	            await jQuery.ajax({
+	    	        type: "GET",
+	                url: "https://api.ipdata.co?api-key=de8fe20471e70f59c26717e16923744ece733cfeeb9e3e0969ee9e3c",
+	                datatype: "json",
+	                success: function(data){
+	                    basicData.countryName = data.country_name;
+    	                basicData.regionName = data.region;
+	                    basicData.cityName = data.city;
+	                    basicData.isp = data.asn.name;
+	                    basicData.userIPv4 = data.ip;
+	                    basicData.tor = data.threat.is_tor;
+	                    basicData.proxy = data.threat.is_proxy;
+                        basicData.anonymous = data.threat.is_anonymous;
+	                    basicData.threat = data.threat;
+	                    basicData.api_response = data;
+	                }
+	            });
+            }catch{
+	            await jQuery.ajax({
+	    	        type: "GET",
+    	            url: iplocationapi,
+	                datatype: "json",
+	                success: function(data){
+	                    basicData.countryName = data.country;
+	                    basicData.regionName = data.regionName;
+	                    basicData.cityName = data.city;
+    	                basicData.isp = data.isp;
+	                    basicData.userIPv4 = data.query;
+	                    basicData.api_response = data;
+	                }
+    	        }); 
+	        }
+        }
         //build userInfo
         userInfo += "<br><p><div class='your-ip-here'><h3>Your IP Address: </h3>IPv4: <br class='ip-br'><div class='ip alert alert-info' role='alert'>"+ basicData.userIPv4 +"</div><br>IPv6: <br class='ip-br'><div class='ip alert alert-info' role='alert'>"+ basicData.userIPv6 +"</div><br>";
         userInfo += "According to your IP address you are located in <strong>"; 
@@ -143,9 +164,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.location='#scanInfoShow';
         await browserSystemScan();
         await browserCapabilities();
-        // security test veriable
-        var browserSequrity = '';
-        //await securityTest();
+
     }
 
     function browserSystemScan(){
@@ -181,60 +200,76 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById("Plugins").innerHTML = BrowserSystemInfo.pluginsInfo;
     }
 
-    async function securityTest(){ 
-        //document.cookie = "ThirdPartyCookie=yes;";
-        //if (document.cookie.indexOf("ThirdPartyCookie=") > -1) {
-        //    browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed — You can be vulnerable to this attack.</span></td></tr>";
-        //} else {
-        //    browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed — You are not vulnerable to this attack.</span></td></tr>";
-        //}
-        var receiveMessage = function (evt) {
-            if (evt.data === '3PCunsupported') {
-                browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed — You are not vulnerable to this attack.</span></td></tr>";
-            } else if (evt.data === '3PCsupported') {
-                browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed — You can be vulnerable to this attack.</span></td></tr>";
-            }
-        };
-        window.addEventListener("message", receiveMessage, false);
-        ////Tracking Protection here
-        function adBlockDetected() {
-            console.log("detect ! ");
-            browserSequrity += "<tr><td>Ad Blocker</td><td><span class='true'>✔</span> Ad Blocker Enable - You are not vulnerable to this attack.</span></td></tr>";
-        }
-        function adBlockNotDetected() {
-            console.log("NotDetect ! ");
-            browserSequrity += "<tr><td>Ad Blocker</td><td><span class='false'>!</span> Ad Blocker Not Found - You can be vulnerable to this attack.</span></td></tr>";
-        }
-  //       if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
-		// 	adBlockDetected();
-		// } else {
-		// 	var importFAB = document.createElement('script');
-  //           importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
-		// 	importFAB.crossOrigin = 'anonymous';
-		// 	importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
-		// 	importFAB.onload = function() {
-  //               console.log("NotDetect ! 2");
-  //               adBlockNotDetected();
-		// 		fuckAdBlock.onDetected(adBlockDetected)
-		// 		fuckAdBlock.onNotDetected(adBlockNotDetected);
-  //               console.log("NotDetect ! 2 full");
-		// 	};
-		// 	importFAB.onerror = function() {
-  //               console.log("detect ! 2 ");
-		// 		adBlockDetected();
-  //               condole.log("detect ! 2 full");
-		// 	};
-		// 	document.head.appendChild(importFAB);
-		// }
-        var loop = true;
-        var adblock = fuckAdBlock.check(loop);
-        if (adblock){
-            adBlockNotDetected();
-        }else{
-            adBlockDetected();
-        }
-        document.getElementById("browserSequrity").innerHTML = browserSequrity;
-    }
-
 });
 
+function securityTest(){ 
+	function cookieTest(){
+	    document.cookie = "ThirdPartyCookie=yes;";
+	    if (document.cookie.indexOf("ThirdPartyCookie=") > -1) {
+	       browserSequrity = "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed — You can be vulnerable to this attack.</td></tr>";
+	    } else {
+	       browserSequrity = "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed — You are not vulnerable to this attack.</td></tr>";
+	    }
+	}
+    //$("body").append('<iframe src="start.html"style="display:none" />')
+    // $(window).on("message onmessage", function (evt) {
+    //     if (evt.data == 'MM:3PCunsupported') {
+    //         console.log("unsupported");
+    //         browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed - You can be vulnerable to this attack.</td></tr>";
+    //     } else if (evt.data == 'MM:3PCsupported') {
+    //         console.log("supported");
+    //         browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed - You are not vulnerable to this attack.</td></tr>";
+    //     }
+    // });
+    //window.addEventListener("message", receiveMessage, false);
+    ////adblock Protection here
+    function adblockTest(){
+	    function adBlockDetected() {
+	        console.log("detect ! ");
+	        browserSequrity += "<tr><td>Ad Blocker</td><td><span class='true'>✔</span> Ad Blocker Enable - You are not vulnerable to this attack.</td></tr>";
+	        showHtml();
+	    }
+	    function adBlockNotDetected() {
+	        console.log("NotDetect ! ");
+	        browserSequrity += "<tr><td>Ad Blocker</td><td><span class='false'>!</span> Ad Blocker Not Found - You can be vulnerable to this attack.</td></tr>";
+	        showHtml();
+	    }
+	//       if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
+	//       	console.log("detect ! ");
+		// 	adBlockNotDetected();
+		// } else {
+			var importFAB = document.createElement('script');
+	        importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+			importFAB.crossOrigin = 'anonymous';
+			importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
+			importFAB.onload = function() {
+	            console.log("NotDetect ! 2");
+	            //adBlockNotDetected();
+				fuckAdBlock.onDetected(adBlockDetected)
+				fuckAdBlock.onNotDetected(adBlockNotDetected);
+	            console.log("NotDetect ! 2 full");
+			};
+			importFAB.onerror = function() {
+	            console.log("detect ! 2 ");
+				adBlockDetected();
+	            console.log("detect ! 2 full");
+			};
+			document.head.appendChild(importFAB);
+			
+		//}
+	    // var loop = true;
+	    // var adblock = fuckAdBlock.check(loop);
+	    // if (adblock){
+	    //     adBlockNotDetected();
+	    // }else{
+	    //     adBlockDetected();
+	    // }
+	}
+	function showHtml(){
+		console.log("it's Done !");
+    	document.getElementById("browserSequrity").innerHTML = browserSequrity;
+	}
+	cookieTest();
+	adblockTest();
+    
+}
