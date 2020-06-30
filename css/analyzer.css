@@ -28,6 +28,37 @@ h2{
 .ip-br{
     display: none;
 }
+.table{
+    color: #666;
+}
+.list-margin{
+    margin-left: 17%;
+}
+input#state {
+    color: transparent;
+    text-shadow: 0 0 0 #000;
+    background-image: linear-gradient(45deg, transparent 50%, gray 50%),linear-gradient(135deg, gray 50%, transparent 50%),linear-gradient(to right, #ccc, #ccc);
+    background-position: calc(100% - 20px) calc(1em + 2px),calc(100% - 15px) calc(1em + 2px),calc(100% - 2.5em) .5em;
+    background-size: 5px 5px,5px 6px,1px 30px;
+    background-repeat: no-repeat;
+    height: 46px;
+    font-size: 15px;
+    cursor: pointer;
+    border: 1px solid #017bff;
+    border-radius: 4px;
+    padding: 10px 40px 10px 10px;
+    margin-top: 15px;
+}
+input#city,input#email,input#street,input#postal,input#phone,.pub_300x250,.cookistest{
+    position: absolute;
+    top: -999px;
+}
+.true{
+	color: green;
+}
+.false{
+	color: red;
+}
 @media (max-width: 575.98px) {
     .ip-br{
         display: block;
@@ -42,41 +73,14 @@ h2{
     .ip{
         font-size: 60%;
     }
+    input#state{
+        height : 40px;
+        font-size: 12px;
+        padding: 6px 20px 6px 6px;
+    }
 }
 @media (max-width: 285.99px){
     .ip{
         font-size: 40%;
     }
-}
-.table{
-    color: #666;
-}
-.list-margin{
-    margin-left: 17%;
-}
-input#state {
-    color: transparent;
-    text-shadow: 0 0 0 #000;
-    background-image: linear-gradient(45deg, transparent 50%, gray 50%),linear-gradient(135deg, gray 50%, transparent 50%),linear-gradient(to right, #ccc, #ccc);
-    background-position: calc(100% - 20px) calc(1em + 2px),calc(100% - 15px) calc(1em + 2px),calc(100% - 2.5em) .5em;
-    background-size: 5px 5px,5px 6px,1px 30px;
-    background-repeat: no-repeat;
-    width: 32%;
-    height: 46px;
-    font-size: 15px;
-    cursor: pointer;
-    border: 1px solid #017bff;
-    border-radius: 4px;
-    padding: 10px;
-    margin-top: 15px;
-}
-input#city,input#email,input#street,input#postal,input#phone,.pub_300x250,.cookistest{
-    position: absolute;
-    top: -999px;
-}
-.true{
-	color: green;
-}
-.false{
-	color: red;
 }

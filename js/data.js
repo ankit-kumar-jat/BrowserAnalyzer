@@ -311,7 +311,7 @@ function faviconUri(network) {
         favicon = 'https://www.dropbox.com/static/images/favicon.ico';
     }
     if (network.name === 'Youtube') {
-        favicon = 'https://www.youtube.com/favicon.ico';
+        favicon = 'https://s.ytimg.com/yts/img/favicon_144-vfliLAfaB.png';
     }
     if (network.name === 'Gmail') {
         favicon = 'https://ssl.gstatic.com/ui/v1/icons/mail/images/favicon5.ico';
