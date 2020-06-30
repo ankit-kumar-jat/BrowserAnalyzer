@@ -89,6 +89,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
                 basicData.tor = data.threat.is_tor;
                 basicData.proxy = data.threat.is_proxy;
                 basicData.anonymous = data.threat.is_anonymous;
+                basicData.threat = data.threat;
                 basicData.api_response = data;
             }
         });
@@ -96,10 +97,17 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
         //build userInfo
         userInfo += "<br><p><div class='your-ip-here'><h3>Your IP Address: </h3>IPv4: <br class='ip-br'><div class='ip alert alert-info' role='alert'>"+ basicData.userIPv4 +"</div><br>IPv6: <br class='ip-br'><div class='ip alert alert-info' role='alert'>"+ basicData.userIPv6 +"</div><br>";
-        userInfo += "According to your IP address";
+        userInfo += "According to your IP address you are located in <strong>"; 
+        if(basicData.cityName != null){
+            userInfo += basicData.cityName +", ";
+        }
+        if(basicData.regionName != null){
+            userInfo += basicData.regionName +", ";
+        }
     	if(basicData.countryName != null){
-            userInfo += " you are located in <strong>"+ basicData.cityName +", "+ basicData.regionName +", "+ basicData.countryName +"</strong>";
+            userInfo += basicData.countryName;
     	}
+        userInfo += "</strong>";
     	if(basicData.isp != null){
             userInfo += " and use internet provided by <strong> "+ basicData.isp +".</strong>";
     	}
@@ -112,13 +120,16 @@ window.addEventListener('DOMContentLoaded', (event) => {
         }
         if(basicData.tor || basicData.proxy || basicData.anonymous){
             if (basicData.tor){
-                userInfo += "<p>You are using <strong>Tor or VPN </strong>to hide yourself from internet threats.</p>";
+                userInfo += "<p>You are using <strong>Tor </strong>to hide yourself from internet threats.</p>";
             } else if (basicData.proxy){
                 userInfo += "<p>You are using <strong>Proxy or VPN </strong>to hide yourself from internet threats.</p>";
             }
             else if (basicData.anonymous){
-                userinfo += "<p>You are using <strong>VPN </strong>to hide yourself from internet threats.</p>"; 
+                userInfo += "<p>You are using <strong>VPN </strong>to hide yourself from internet threats.</p>"; 
             }
+        }
+        if(basicData.threat.is_known_attacker || basicData.threat.is_known_abuser || basicData.threat.is_threat || basicData.threat.is_bogon){
+            userInfo += "<div class='alert alert-danger' role='alert'><p>You are using not trustable VPN or other source. Our system found that Your request source is harmfull or used for harmfull activities.</p></div>";
         }
         document.getElementById("userinfo").innerHTML = userInfo;
         document.getElementById("scanning").style.display = 'none';

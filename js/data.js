@@ -285,7 +285,8 @@ var basicData = {
     api_response: null,
     tor: null,
     proxy: null,
-    anonymous: null
+    anonymous: null,
+    threat : null
 };
 
 //social media leaks
