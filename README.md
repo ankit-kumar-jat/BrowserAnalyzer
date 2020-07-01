@@ -4,6 +4,9 @@
 > Ankit Kumar Jat | 17 jun 2020 (start date)
 
 
+[BrowserAnalyzer Click Me](https://ankit-kumar-jat.github.io/BrowserAnalyzer/)
+
+
 #### What information can a website find out about you when you visit it?
 
 A lot more than you probably realize. This tool lists information that any website, advertisement, and widget can collect from your web browser. Such information could be used to identify you and/or track your behavior using tactics like IP lookups and browser fingerprinting. While none of this may be considered personally identifiable information (PII), the profile drawn from all these pieces of information can be so distinct that it can only plausibly match a single person.
