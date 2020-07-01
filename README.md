@@ -65,7 +65,7 @@ A lot more than you probably realize. This tool lists information that any websi
  
 
 >
->**NOTE :** This tool (Site) not store any information of user like other sites do using google analatics to use users info for their profit.
+>**NOTE :** This tool (Site) not store any information of user.
 >
  
  
