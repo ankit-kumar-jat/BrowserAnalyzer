@@ -12,50 +12,61 @@ A lot more than you probably realize. This tool lists information that any websi
 ## Features
 
 
-### 1. Basic Info
+> ### 1.    Basic Info
+> 
+> 
+>
+>    -    Ip Address
+>    -    Location
+>    -    Isp
+>    -    OS(Linux, Windows, Ios etc.)
+>    -    Browser Version
+>    -    Effective Resolution
+>    -    Battery Percentage
+>    -    Tor, Proxy, VPN Detection
+>
+> 
+> 
+> ### 2.    Browser & System Info
+> 
+> 
+>
+>    -    Browser Capabilities
+>    -    Some System Info
+>    -    Browser Plugins
+>
+> 
+> 
+> ### 3.    User Account Info
+> 
+> 
+>
+>    -    Detect User's Logged Accounts
+>    -    Ad Blocker Detection
+>    -    3rd Party Cookies Allowed or Not
+>
+> 
+> 
+> ### 4.    Autofill Info
+> 
+> 
+>
+>    -    Simulation of Autofill Scam
+>
+> 
+> 
+> ### 5.    Fingerprint Info
+> 
+> 
+>
+>    -    Detect Unique Canvas Fingerprint
+>    -    Other Browser Fingerprint Info
+>   
+ 
 
-
-		> - Ip Address
-		> - Location
-		> - Isp
-		> - OS(Linux, Windows, Ios etc.)
-		> - Browser Version
-		> - Effective Resolution
-		> - Battery Percentage
-		> - Tor, Proxy, VPN Detection
-
-
-### 2. Browser & System Info
-
-
-		> - Browser Capabilities
-		> - Some System Info
-		> - Browser Plugins
-
-
-### 3. User Account Info
-
-
-		> - Detect User's Logged Accounts
-		> - Ad Blocker Detection
-		> - 3rd Party Cookies Allowed or Not
-
-
-### 4. Autofill Info
-
-
-		> - Simulation of Autofill Scam
-
-
-### 5. Fingerprint Info
-
-
-		> - Detect Unique Canvas Fingerprint
-		> - Other Browser Fingerprint Info
-
-
-```
-**NOTE :** This tool (Site) not store any information of user like other sites do using google analatics to use users info for their profit.
-```
-
+>
+>**NOTE :** This tool (Site) not store any information of user like other sites do using google analatics to use users info for their profit.
+>
+ 
+ 
 ####			***Feel free to contribute***
