@@ -12,6 +12,18 @@
 A lot more than you probably realize. This tool lists information that any website, advertisement, and widget can collect from your web browser. Such information could be used to identify you and/or track your behavior using tactics like IP lookups and browser fingerprinting. While none of this may be considered personally identifiable information (PII), the profile drawn from all these pieces of information can be so distinct that it can only plausibly match a single person.
 
 
+## Screenshoots
+
+
+![Basic Scan Image](assets/screenshoots/screenshoot_1.png)
+
+
+![Browser & System Scan Image](assets/screenshoots/screenshoot_2.png)
+
+
+![User Account Scan Image](assets/screenshoots/screenshoot_3.png)
+
+
 ## Features
 
 

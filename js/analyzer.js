@@ -29,7 +29,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
     	}
     	if(typeof navigator.getBattery === "function"){
     		navigator.getBattery().then(function(battery) {
-                basicData.batteryPercentage = battery.level*100+"%";
+                basicData.batteryPercentage = (Math.floor(battery.level*100*100)/100)+"%";
                 if(battery.charging){
                     BrowserSystemInfo.powerStatus = "Connected Charging";
                 } else{
@@ -150,7 +150,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
             }
         }
         if(basicData.threat.is_known_attacker || basicData.threat.is_known_abuser || basicData.threat.is_threat || basicData.threat.is_bogon){
-            userInfo += "<div class='alert alert-danger' role='alert'><p>You are using not trustable VPN or other source. Our system found that Your request source is harmfull or used for harmfull activities.</p></div>";
+            userInfo += "<div class='alert alert-danger' role='alert'><p>You are using not trustable VPN, Tor or other source. Our system found that Your request source is harmfull or used for harmfull activities.</p></div>";
         }
         document.getElementById("userinfo").innerHTML = userInfo;
         document.getElementById("scanning").style.display = 'none';
