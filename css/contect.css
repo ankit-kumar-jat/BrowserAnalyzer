@@ -11,3 +11,8 @@ p{
 h2{
     color: #009dfb;
 }
+@media (min-width: 576px) {
+  .about-tb-container{
+    margin-left: 17%;
+  }
+}

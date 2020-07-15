@@ -11,3 +11,25 @@ p{
 h2{
     color: #009dfb;
 }
+.about{
+  font-size: 20px;
+  width: 50%;
+  margin-left: 15%;
+}
+  @media (max-width: 767.98px) {
+    .about{
+    width: 80%;
+  }
+}
+@media (max-width: 991.98px) {
+  .about{
+    width:70%;
+  }
+}
+/*
+@media (min-width: 768px) {
+  .about{
+    text-align: justify;
+  }
+}
+*/

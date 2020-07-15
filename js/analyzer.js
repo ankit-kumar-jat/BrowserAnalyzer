@@ -183,7 +183,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
         document.getElementById("device").innerHTML = basicData.device;
         document.getElementById("hardwareConcurrency").innerHTML = BrowserSystemInfo.logicalProcessors;
         document.getElementById("WEBGLVendor").innerHTML = BrowserSystemInfo.webglVendor;
-        document.getElementById("WEBGLRanderer").innerHTML = BrowserSystemInfo.webglRenderer;
+        document.getElementById("WEBGLRenderer").innerHTML = BrowserSystemInfo.webglRenderer;
         if (BrowserSystemInfo.userDeviceMemory == 'undefined GB'){
             document.getElementById("deviceMemory").innerHTML = '';
         } else{
