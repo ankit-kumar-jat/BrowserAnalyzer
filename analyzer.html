@@ -4,6 +4,7 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="Description" content="Do you know what information can a website find out about you when you visit it? A lot more than you probably realize. This tool lists information that any website can collect from your web browser.">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -18,7 +19,7 @@
             var iplocationapihttps = "https://api.ipdata.co/?api-key=test"
         </script>
         <link rel="shortcut icon" href="assets/brand/logo.svg" type="image/x-icon">
-        <link href='https://fonts.googleapis.com/css?family=Pangolin' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Pangolin&display=swap' rel='stylesheet'>
     </head>
     <body>
         <header>
@@ -271,23 +272,61 @@
                         </div>
                     </div>
                 </div>
-        <iframe src="js/start.html"style="display:none"></iframe>
         <!-- Optional JavaScript -->
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer=""></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" defer=""></script>
+        <script rel="preconnect" src="https://code.jquery.com/jquery-3.3.0.min.js"></script>
+        <script rel="preconnect" src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous" defer=""></script>
+        <script rel="preconnect" src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous" defer=""></script>
         <!-- My JavaScript -->
         <script src="js/main.js" defer=""></script>
         <script src="js/pluginDetect.js" defer=""></script>
         <script src="js/fingerprint2.min.js" defer=""></script>
         <script src="js/userAccountsDetect.js" defer=""></script>
         <script src="js/detect.js" defer=""></script>
-        <script src="js/fuckadblock.min.js" defer=""></script>
+        
         <script src="js/data.js" defer=""></script>
+        <!--
+        <script src="js/fuckadblock.min.js" defer=""></script>
+    -->
         <script src="js/analyzer.js" defer=""></script>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-171457664-1"></script>
+        
+        <script>
+        // Function called if AdBlock is not detected
+        function adBlockNotDetected() {
+            window.browserSequrity = "<tr><td>Ad Blocker</td><td><span class='false'>!</span> Enabled Ad Blocker Not Found - You can be vulnerable to this attack.</td></tr>";
+        }
+        // Function called if AdBlock is detected
+        function adBlockDetected() {
+            window.browserSequrity = "<tr><td>Ad Blocker</td><td><span class='true'>✔</span> Ad Blocker Enable - You are not vulnerable to this attack.</td></tr>";
+        }
+
+        // We look at whether FuckAdBlock already exists.
+        if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
+            // If this is the case, it means that something tries to usurp are identity
+            // So, considering that it is a detection
+            adBlockDetected();
+        } else {
+            // Otherwise, you import the script FuckAdBlock
+            var importFAB = document.createElement('script');
+            importFAB.onload = function() {
+                // If all goes well, we configure FuckAdBlock
+                fuckAdBlock.onDetected(adBlockDetected)
+                fuckAdBlock.onNotDetected(adBlockNotDetected);
+            };
+            importFAB.onerror = function() {
+                // If the script does not load (blocked, integrity error, ...)
+                // Then a detection is triggered
+                adBlockDetected(); 
+            };
+            //importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
+            //importFAB.crossOrigin = 'anonymous';
+            //importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
+            importFAB.src = 'js/fuckadblock.min.js';
+            document.head.appendChild(importFAB);
+        }
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script rel="preconnect" async src="https://www.googletagmanager.com/gtag/js?id=UA-171457664-1"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}

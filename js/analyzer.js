@@ -15,7 +15,7 @@ function browserCapabilitiesCheck(){
 	    }
 	    BrowserSystemInfo.connection += "<table><tr><td>Effective Network Type</td><td>" + navigator.connection.effectiveType  + "</td></tr><tr><td>Round Trip Time</td><td>" + navigator.connection.rtt + " ms</td></tr><tr><td>Effective BandWidth</td><td>" + navigator.connection.downlink + " Mbps</td></tr><tr><td>Save Data</td><td>" + BrowserSystemInfo.saveData + "</td></tr></table>";
 	}
-	BrowserSystemInfo.browserCapabilities += "<br><table class='table table-hover'><tbody><tr><td>Iframes</td><td>" + detect.iframCheck() + "</td><td>Activexcontrols</td><td>" + detect.activexCheck() + "</td></tr><tr><td>Javascript</td><td>" + "Enable" + "</td><td>WebRTC Status</td><td>" + detect.webRTCcheck() + "</td></tr><tr><td>Do Not Track</td><td>" + detect.doNotTrack() + "</td><td>Popup Blocker</td><td>" + detect.pupupBlocked() + "</td></tr></tbody></table>";
+	BrowserSystemInfo.browserCapabilities += "<br><table class='table table-hover'><tbody><tr><td>Iframes</td><td>" + detect.iframCheck() + "</td><td>Activexcontrols</td><td>" + detect.activexCheck() + "</td></tr><tr><td>Javascript</td><td>" + "Enable" + "</td><td>WebRTC Status</td><td>" + detect.webRTCcheck() + "</td></tr><tr><td>Do Not Track</td><td>" + detect.doNotTrack() + "</td><td>Popup Blocker</td><td>" + BrowserSystemInfo.popup + "</td></tr></tbody></table>";
 	BrowserSystemInfo.browserCapabilities += "<br><p><strong>Javascript, iframes, ActiveX,</strong> and <strong>Flash</strong> all allow code to be executed in your browser, which can be a security vulnerability. You can certainly do without ActiveX and Flash, which infamously contain numerous bugs and vulnerabilities. Javascript and iframes can also be disabled, but you may find browsing the web without them a hindrance as many popular sites use them these days.</p>";
 	BrowserSystemInfo.browserCapabilities += "<br><i class='glyphicon glyphicon-info-sign'></i><p>When you opened this page, we attempted to generate a popup to test whether your browser blocked it. Popups are not only annoying; they are often malicious.</p>";
 	BrowserSystemInfo.browserCapabilities += "<p><strong>Do Not Track</strong> is a setting in most web browsers that opt you out of tracking programs. While it’s good practice to turn this on, not all websites and advertisers abide by it.</p>";
@@ -201,6 +201,43 @@ function checkAutoFill() {
 }
 window.onload = checkAutoFill;
 
+
+function securityTest(){ 
+	function cookieTest(){
+	    document.cookie = "ThirdPartyCookie=yes;";
+	    if (document.cookie.indexOf("ThirdPartyCookie=") > -1) {
+	       browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed — You can be vulnerable to this attack.</td></tr>";
+	    } else {
+	       browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed — You are not vulnerable to this attack.</td></tr>";
+	    }
+	}
+    //$("body").append('<iframe src="start.html"style="display:none" />')
+    // $(window).on("message onmessage", function (evt) {
+    //     if (evt.data == 'MM:3PCunsupported') {
+    //         console.log("unsupported");
+    //         browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed - You can be vulnerable to this attack.</td></tr>";
+    //     } else if (evt.data == 'MM:3PCsupported') {
+    //         console.log("supported");
+    //         browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed - You are not vulnerable to this attack.</td></tr>";
+    //     }
+    // });
+    //window.addEventListener("message", receiveMessage, false);
+    ////adblock Protection here
+    // Function called if AdBlock is not detected
+    function adblockTest(){
+
+	}
+	function showHtml(){
+		//console.log("it's Done !");
+    	document.getElementById("browserSequrity").innerHTML = window.browserSequrity;
+	}
+	cookieTest();
+	adblockTest();
+	showHtml();
+    
+}
+
+
 window.addEventListener('DOMContentLoaded', (event) => { 
     document.getElementById("scanBtn").addEventListener("click", function (){
         document.getElementById('scanBtn').style.display='none';
@@ -211,8 +248,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         socialMediaLeaksCheck();
         fingerprintCheck();
         startScan();
-         // security test veriable
-        var browserSequrity = null;
         securityTest();
     });
 
@@ -409,74 +444,4 @@ window.addEventListener('DOMContentLoaded', (event) => {
 
 });
 
-function securityTest(){ 
-	function cookieTest(){
-	    document.cookie = "ThirdPartyCookie=yes;";
-	    if (document.cookie.indexOf("ThirdPartyCookie=") > -1) {
-	       browserSequrity = "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed — You can be vulnerable to this attack.</td></tr>";
-	    } else {
-	       browserSequrity = "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed — You are not vulnerable to this attack.</td></tr>";
-	    }
-	}
-    //$("body").append('<iframe src="start.html"style="display:none" />')
-    // $(window).on("message onmessage", function (evt) {
-    //     if (evt.data == 'MM:3PCunsupported') {
-    //         console.log("unsupported");
-    //         browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='false'>!</span> Allowed - You can be vulnerable to this attack.</td></tr>";
-    //     } else if (evt.data == 'MM:3PCsupported') {
-    //         console.log("supported");
-    //         browserSequrity += "<tr><td>Third-Party Cookies</td><td><span class='true'>✔</span> Not Allowed - You are not vulnerable to this attack.</td></tr>";
-    //     }
-    // });
-    //window.addEventListener("message", receiveMessage, false);
-    ////adblock Protection here
-    function adblockTest(){
-	    function adBlockDetected() {
-	        console.log("detect ! ");
-	        browserSequrity += "<tr><td>Ad Blocker</td><td><span class='true'>✔</span> Ad Blocker Enable - You are not vulnerable to this attack.</td></tr>";
-	        showHtml();
-	    }
-	    function adBlockNotDetected() {
-	        console.log("NotDetect ! ");
-	        browserSequrity += "<tr><td>Ad Blocker</td><td><span class='false'>!</span> Ad Blocker Not Found - You can be vulnerable to this attack.</td></tr>";
-	        showHtml();
-	    }
-	//       if(typeof fuckAdBlock !== 'undefined' || typeof FuckAdBlock !== 'undefined') {
-	//       	console.log("detect ! ");
-		// 	adBlockNotDetected();
-		// } else {
-			var importFAB = document.createElement('script');
-	        importFAB.integrity = 'sha256-xjwKUY/NgkPjZZBOtOxRYtK20GaqTwUCf7WYCJ1z69w=';
-			importFAB.crossOrigin = 'anonymous';
-			importFAB.src = 'https://cdnjs.cloudflare.com/ajax/libs/fuckadblock/3.2.1/fuckadblock.min.js';
-			importFAB.onload = function() {
-	            console.log("NotDetect ! 2");
-	            //adBlockNotDetected();
-				fuckAdBlock.onDetected(adBlockDetected)
-				fuckAdBlock.onNotDetected(adBlockNotDetected);
-	            console.log("NotDetect ! 2 full");
-			};
-			importFAB.onerror = function() {
-	            console.log("detect ! 2 ");
-				adBlockDetected();
-	            console.log("detect ! 2 full");
-			};
-			document.head.appendChild(importFAB);
-			
-		//}
-	    // var loop = true;
-	    // var adblock = fuckAdBlock.check(loop);
-	    // if (adblock){
-	    //     adBlockNotDetected();
-	    // }else{
-	    //     adBlockDetected();
-	    // }
-	}
-	function showHtml(){
-		console.log("it's Done !");
-    	document.getElementById("browserSequrity").innerHTML = browserSequrity;
-	}
-	cookieTest();
-	adblockTest();
-    
-}
+

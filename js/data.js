@@ -208,9 +208,10 @@ var BrowserSystemInfo = {
     saveData: '',
     browserCapabilities: '',
     userPlugins: '',
-    pluginsInfo: ''
+    pluginsInfo: '',
+    popup: ''
 }
-
+BrowserSystemInfo.popup = detect.popupBlocked();
 
 var userInfo = "";
 var basicData = {
@@ -231,5 +232,4 @@ var basicData = {
     anonymous: null,
     threat : null
 };
-
 

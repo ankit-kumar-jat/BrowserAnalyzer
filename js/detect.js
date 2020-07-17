@@ -753,7 +753,7 @@ var detect = {
 		
 		return language;
 	},
-	pupupBlocked: function(){
+	popupBlocked: function(){
 		var blocked = '';
 		var popup_window=window.open("https://www.google.com","myWindow","toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=yes, width=400, height=400");            
 	    try {
