@@ -20,8 +20,6 @@ function browserCapabilitiesCheck(){
 	BrowserSystemInfo.browserCapabilities += "<br><i class='glyphicon glyphicon-info-sign'></i><p>When you opened this page, we attempted to generate a popup to test whether your browser blocked it. Popups are not only annoying; they are often malicious.</p>";
 	BrowserSystemInfo.browserCapabilities += "<p><strong>Do Not Track</strong> is a setting in most web browsers that opt you out of tracking programs. While it’s good practice to turn this on, not all websites and advertisers abide by it.</p>";
 }
-
-
 // userPlugins
 function userPluginsCheck(){
 	var otherPlugins = window.PluginDetect.Plugins;
@@ -61,8 +59,6 @@ function userPluginsCheck(){
 	    BrowserSystemInfo.pluginsInfo += " in your browser. If any site knows this information, vulnerabilities in these plugins can be exploited by hackers to open a backdoor to your system.</p></div>"
 	}
 }
-
-
 //social media leaks
 function socialMediaLeaksCheck(){
 	var isFirstLoggedIn = true;
@@ -108,10 +104,7 @@ function socialMediaLeaksCheck(){
 	    return favicon;
 	}
 }
-
-
 //fingerprint Info
-//
 function fingerprintCheck(){
 	var fingerprintDiv = document.getElementById('browser-fingerprint-details');
 	var data_fingerprint ='' ;
@@ -138,10 +131,7 @@ function fingerprintCheck(){
 	    f_print.innerHTML += "<p>which means that I will be able to identify you even if you don't have a cookie stored in your system.</p>";
 	});
 }
-
-
 //autofill
-
 function checkAutoFill() {
    var q = function(id) {
        return document.getElementById(id);
@@ -200,8 +190,7 @@ function checkAutoFill() {
    }
 }
 window.onload = checkAutoFill;
-
-
+//Third party cookies and ad blocker test
 function securityTest(){ 
 	function cookieTest(){
 	    document.cookie = "ThirdPartyCookie=yes;";
@@ -236,8 +225,6 @@ function securityTest(){
 	showHtml();
     
 }
-
-
 window.addEventListener('DOMContentLoaded', (event) => { 
     document.getElementById("scanBtn").addEventListener("click", function (){
         document.getElementById('scanBtn').style.display='none';
@@ -250,9 +237,6 @@ window.addEventListener('DOMContentLoaded', (event) => {
         startScan();
         securityTest();
     });
-
-
-
     async function startScan(){
 
         if (navigator.maxTouchPoints > 0){
